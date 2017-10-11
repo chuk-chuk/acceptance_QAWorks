@@ -10,18 +10,13 @@ feature 'contact us page' do
   end
 
   scenario 'user able to find a contact form' do
-    visit ('/')
-    first('.fusion-main-menu').click_link('CONTACT US')
+    go_to_contact_page
     expect(page).to have_content 'GET IN TOUCH'
   end
 
   scenario 'user able to fill in a contact form' do
-    visit ('/')
-    first('.fusion-main-menu').click_link('CONTACT US')
-    fill_in 'Name', with: 'j.Bloggs'
-    fill_in 'Email', with: 'j.Bloggs@qaworks.com'
-    fill_in 'Subject/Company/Project', with: 'test automation'
-    fill_in 'How can we help you?', with: 'please contact me I want to find out more'
+    go_to_contact_page
+    fill_in_form
     expect(page).to have_field('Name', with: 'j.Bloggs')
     expect(page).to have_field('Email', with: 'j.Bloggs@qaworks.com')
     expect(page).to have_field('Subject/Company/Project', with: 'test automation')
@@ -29,20 +24,15 @@ feature 'contact us page' do
   end
 
   scenario 'user can submit a contact form' do
-    visit ('/')
-    first('.fusion-main-menu').click_link('CONTACT US')
-    fill_in 'Name', with: 'j.Bloggs'
-    fill_in 'Email', with: 'j.Bloggs@qaworks.com'
-    fill_in 'Subject/Company/Project', with: 'test automation'
-    fill_in 'How can we help you?', with: 'please contact me I want to find out more'
+    go_to_contact_page
+    fill_in_form
     click_button('send')
     sleep 5
     expect(page).to have_content 'THANK YOU FOR YOUR MESSAGE.'
   end
 
   scenario 'user can not leave empty fields' do
-    visit ('/')
-    first('.fusion-main-menu').click_link('CONTACT US')
+    go_to_contact_page
     fill_in 'Name', with: ''
     fill_in 'Email', with: ''
     fill_in 'Subject/Company/Project', with: 'This is not a required field'

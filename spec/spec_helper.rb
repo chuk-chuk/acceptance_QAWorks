@@ -1,6 +1,7 @@
 require 'selenium/webdriver'
 require 'capybara/rspec'
 require 'rspec'
+require 'features/web_helpers'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
