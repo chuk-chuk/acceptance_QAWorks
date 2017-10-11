@@ -27,4 +27,16 @@ feature 'contact us page' do
     expect(page).to have_field('Subject/Company/Project', with: 'test automation')
     expect(page).to have_field('How can we help you?', with: 'please contact me I want to find out more')
   end
+
+  scenario 'user can submit a contact form' do
+    visit ('/')
+    first('.fusion-main-menu').click_link('CONTACT US')
+    fill_in 'Name', with: 'j.Bloggs'
+    fill_in 'Email', with: 'j.Bloggs@qaworks.com'
+    fill_in 'Subject/Company/Project', with: 'test automation'
+    fill_in 'How can we help you?', with: 'please contact me I want to find out more'
+    click_button('send')
+    sleep 5
+    expect(page).to have_content 'THANK YOU FOR YOUR MESSAGE.'
+  end
 end
