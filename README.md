@@ -23,9 +23,9 @@ Then I should be able to contact QAWorks with the following information     
 
 To start with, install Homebrew is package manager for Macs and Xcode:
 
-- [x][Homebrew](https://brew.sh/)
+- [ ][Homebrew](https://brew.sh/)
 
-- [x][Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12/)
+- [ ][Xcode](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12/)
 
 Make sure you have installed Firefox browser on your machine:
 ```
@@ -52,11 +52,11 @@ rspec
 ### Highlights
 * These tests were written in Ruby using RSpec, Capybara and Selenium
 * I set Capybara's default driver to be Selenium;
-* Test do not run in Windows, tests automation setup for Mac OS X;
+* Test do not run in Windows, tests automation setup for Mac OS X only;
 * Automated other scenarios: invalid email address and required field error.
 * The required field error appeared exactly twice the number of expected occurrences. I found out there is a hidden div duplicating these message;
 * The form was submitted asynchronously. Capybara does not wait until async calls are finished, and asserts the data on the page that is not yet updated.
 
 ### Improvements
 
- I realised that Capybara provides auto-waiting feature - powerful synchronisation for asynchronous processes, like AJAX calls. To improve my tests I would add a helper called [wait_until](https://shvets.github.io/blog/2013/10/12/acceptance_tricks.html/). Ideally it should wait until all AJAX requests are finished, but I added sleep 5 to it for simplicity.
+ I realised that Capybara provides auto-waiting feature - powerful synchronisation for asynchronous processes, like AJAX calls. To improve my tests I would add a helper called [wait_until](https://shvets.github.io/blog/2013/10/12/acceptance_tricks.html). Ideally it should wait until all AJAX requests are finished, but I added sleep 5 to it for simplicity.
