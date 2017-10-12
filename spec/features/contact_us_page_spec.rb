@@ -44,4 +44,18 @@ feature 'contact us page' do
     end
     expect(page).to have_content 'PLEASE RE-SUBMIT WITH CORRECT INFORMATION'
   end
+
+  scenario 'user can not fill in invalid email' do
+    go_to_contact_page
+    fill_in 'Name', with: 'j.Bloggs'
+    fill_in 'Email', with: 'invalidEmail'
+    fill_in 'Subject/Company/Project', with: 'test automation'
+    fill_in 'How can we help you?', with: 'please contact me I want to find out more'
+    click_button('send')
+    sleep 5
+    within('form') do
+        expect(page).to have_content 'The e-mail address entered is invalid'
+    end
+    expect(page).to have_content 'PLEASE RE-SUBMIT WITH CORRECT INFORMATION'
+  end
 end
